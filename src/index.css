@@ -357,11 +357,11 @@ body {
 /* Print Styles */
 @media print {
   @page {
-    margin: 0;
+    margin: 20mm;
   }
   body {
     background-color: white;
-    padding: 20mm;
+    padding: 0;
   }
   .sidebar, .quote-top-bar, .btn, .td-action, .add-item-btn {
     display: none !important;
@@ -381,6 +381,7 @@ body {
     padding: 0;
     max-width: none;
     margin: 0;
+    overflow: visible;
   }
   .input-field, .minimal-input, .file-name-input {
     border: none;
@@ -389,7 +390,9 @@ body {
   }
   textarea.input-field, textarea.minimal-input {
     resize: none;
-    height: auto;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
   }
   .info-boxes {
     border-color: #cbd5e1;
@@ -398,9 +401,23 @@ body {
     border-color: #cbd5e1;
     background-color: transparent;
   }
-  
-  /* Pagination Controls */
-  tr, .info-boxes, .quote-footer, .invoice-header {
+
+  /* Page-break controls */
+  .items-table {
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+  .items-table thead {
+    display: table-header-group; /* repeat header on each page */
+  }
+  .items-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .items-table td {
+    overflow: visible;
+  }
+  .info-boxes, .quote-footer, .invoice-header {
     page-break-inside: avoid;
     break-inside: avoid;
   }
