@@ -41,23 +41,26 @@ export default function LineItems({ items, onChange }) {
             return (
               <tr key={item.id}>
                 <td style={{ verticalAlign: 'top' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', fontWeight: 'bold', marginBottom: '8px' }}>
-                    <span style={{ marginRight: '4px' }}>{index + 1}.</span>
-                    <input
-                      type="text"
+                  <div style={{ display: 'flex', alignItems: 'flex-start', fontWeight: 'bold', marginBottom: '8px' }}>
+                    <span style={{ marginRight: '4px', whiteSpace: 'nowrap', paddingTop: '2px' }}>{index + 1}.</span>
+                    <textarea
                       className="minimal-input"
                       placeholder="Component Title (e.g. Website Development)"
-                      value={item.title !== undefined ? item.title : item.description} 
+                      value={item.title !== undefined ? item.title : item.description}
                       onChange={(e) => handleItemChange(index, 'title', e.target.value)}
-                      style={{ fontWeight: 'bold', fontSize: '1rem', width: '100%', margin: 0, padding: 0 }}
+                      onInput={(e) => { e.target.style.height = 'auto'; e.target.style.height = e.target.scrollHeight + 'px'; }}
+                      rows={1}
+                      style={{ fontWeight: 'bold', fontSize: '1rem', width: '100%', margin: 0, padding: 0, resize: 'none', overflow: 'hidden', lineHeight: '1.5', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
                     />
                   </div>
                   <textarea
                     className="minimal-input"
                     placeholder="Component description and specifications..."
-                    value={item.title !== undefined ? item.description : ''} // If it's old data, description became title
+                    value={item.title !== undefined ? item.description : ''}
                     onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                    style={{ width: '100%', height: '60px', resize: 'none', marginLeft: '16px', padding: 0 }}
+                    onInput={(e) => { e.target.style.height = 'auto'; e.target.style.height = e.target.scrollHeight + 'px'; }}
+                    rows={2}
+                    style={{ width: '100%', minHeight: '60px', height: 'auto', resize: 'none', overflow: 'hidden', marginLeft: '16px', padding: 0, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}
                   />
                 </td>
                 <td style={{ verticalAlign: 'top', paddingTop: '16px' }}>

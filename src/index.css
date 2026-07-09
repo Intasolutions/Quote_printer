@@ -305,6 +305,8 @@ body {
 .items-table td {
   padding: 12px;
   border-bottom: 1px solid var(--text-main);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .items-table tbody tr:nth-child(odd) td {
